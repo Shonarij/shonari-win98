@@ -1,0 +1,9 @@
+
+{
+  "name": "Shonari Windows98 Resume",
+  "version": "1.0.0",
+  "author": "Shonari Johnson",
+  "description": "A nostalgic Windows 98-style digital resume landing page built for MyWeb10.",
+  "entry": "index.html",
+  "icon": "💾"
+}
