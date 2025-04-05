@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(to bottom, #000, #001d3d, #0034a2, #66aaff, #B2CFFF);
+  color: white;
+  padding: 0 20px;
+  animation: fadeIn 4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#disney-intro {
+  text-align: center;
+  margin-top: 80px;
+  animation: introLinger 3s ease-in-out;
+}
+
+#name-reveal {
+  font-size: 3em;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeInText 3s 2.5s forwards;
+}
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
+.resume {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 50px;
+  backdrop-filter: blur(6px);
+  color: white;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.08);
+}
+
+.resume section {
+  margin-bottom: 30px;
+}
+
+a {
+  color: #b0d1ff;
+  text-decoration: none;
+}
