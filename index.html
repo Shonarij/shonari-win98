@@ -4,55 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shonari Johnson</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      animation: blueCycle 8s ease-in-out forwards;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1#name-reveal {
+      opacity: 0;
+      font-size: 3em;
+      margin-top: 20vh;
+      color: white;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .fairy-dust {
+      animation: fadeOut 1s ease-out;
+    }
+
+    @keyframes blueCycle {
+      0% { background: black; }
+      25% { background: #000428; }
+      50% { background: #004e92; }
+      75% { background: #4286f4; }
+      100% { background: #b2c9e3; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 0.8; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(10px); }
+    }
+  </style>
+  <script src="script.js"></script>
 </head>
 <body>
-  <div id="disney-intro">
-    <canvas id="tinkerbell-arc"></canvas>
-    <h1 id="name-reveal">Shonari Johnson</h1>
-  </div>
-
-  <main class="resume">
-    <section>
-      <h2>Creative Producer | Strategist | Consultant</h2>
-      <p>Specializing in campaign production, logistics, and cultural strategy.</p>
-    </section>
-
-    <section>
-      <h3>Experience</h3>
-      <ul>
-        <li><strong>.monks – Adidas Global Campaign</strong> – Producer (All-Star Weekend 2025)</li>
-        <li><strong>.monks – Metro BYOD</strong></li>
-        <li><strong>.monks – T-Mobile Google Pixel CM4</strong></li>
-        <li><strong>Cartoon Network</strong> – Animation Coordinator</li>
-        <li><strong>KKO Productions</strong> – Yoga Shoots</li>
-        <li><strong>Coachella Wellness</strong> – Producer</li>
-        <li><strong>InfinitelyFluid</strong> – Event Strategy</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Services Offered</h3>
-      <ul>
-        <li>Production Logistics & Coordination</li>
-        <li>Creative Strategy & Brand Storytelling</li>
-        <li>Wellness & Cultural Consulting</li>
-        <li>Multi-platform Media Campaign Management</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Skills</h3>
-      <p>Adobe CC, Notion, Unity, CAD, Scheduling, Vendor & Talent Mgmt, DEI Workshop Development</p>
-    </section>
-
-    <section>
-      <h3>Download Portfolio</h3>
-      <a href="Shonari_Trae_Portfolio.zip" download>Click to Download</a>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+  <h1 id="name-reveal">Shonari Johnson</h1>
 </body>
 </html>
