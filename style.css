@@ -1,49 +1,39 @@
+/* Disney VHS Blue Backdrop + Reveal Text */
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(to bottom, #000, #001d3d, #0034a2, #66aaff, #B2CFFF);
+  background: linear-gradient(to right, black, #001f3f, #0074D9, #7FDBFF, #ADD8E6);
+  animation: fadeBlue 6s ease forwards;
+  overflow: hidden;
+}
+
+@keyframes fadeBlue {
+  0%   { background-color: black; }
+  25%  { background-color: #001f3f; }
+  50%  { background-color: #0074D9; }
+  75%  { background-color: #7FDBFF; }
+  100% { background-color: #ADD8E6; }
+}
+
+.name-reveal {
+  font-family: 'Courier New', monospace;
   color: white;
-  padding: 0 20px;
-  animation: fadeIn 4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-#disney-intro {
-  text-align: center;
-  margin-top: 80px;
-  animation: introLinger 3s ease-in-out;
-}
-
-#name-reveal {
   font-size: 3em;
-  font-weight: bold;
+  text-align: center;
+  margin-top: 40vh;
   opacity: 0;
-  animation: fadeInText 3s 2.5s forwards;
+  animation: revealName 5s ease-in-out forwards 4s;
 }
 
-@keyframes fadeInText {
-  to { opacity: 1; }
+@keyframes revealName {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.resume {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 50px;
-  backdrop-filter: blur(6px);
-  color: white;
-  box-shadow: 0 0 60px rgba(255, 255, 255, 0.08);
-}
-
-.resume section {
-  margin-bottom: 30px;
-}
-
-a {
-  color: #b0d1ff;
-  text-decoration: none;
+/* Canvas fills entire page */
+canvas#introCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
 }
