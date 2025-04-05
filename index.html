@@ -4,45 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shonari Johnson</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      animation: blueCycle 8s ease-in-out forwards;
-      font-family: 'Courier New', monospace;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    h1#name-reveal {
-      opacity: 0;
-      font-size: 3em;
-      margin-top: 20vh;
-      color: white;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .fairy-dust {
-      animation: fadeOut 1s ease-out;
-    }
-
-    @keyframes blueCycle {
-      0% { background: black; }
-      25% { background: #000428; }
-      50% { background: #004e92; }
-      75% { background: #4286f4; }
-      100% { background: #b2c9e3; }
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 0.8; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(10px); }
-    }
-  </style>
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <h1 id="name-reveal">Shonari Johnson</h1>
+  <canvas id="introCanvas"></canvas>
+  <h1 class="name-reveal">Shonari Johnson</h1>
 </body>
 </html>
