@@ -1,48 +1,50 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const arc = document.createElement("div");
-  arc.style.position = "fixed";
-  arc.style.top = "0";
-  arc.style.left = "100%";
-  arc.style.width = "4px";
-  arc.style.height = "4px";
-  arc.style.borderRadius = "50%";
-  arc.style.background = "white";
-  arc.style.zIndex = "1000";
-  document.body.appendChild(arc);
+const canvas = document.getElementById("introCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  const fairyDust = [];
+let progress = 0;
+const radius = 250;
+const centerX = canvas.width;
+const centerY = canvas.height / 2;
+const dustParticles = [];
 
-  const createDust = (x, y) => {
-    const dust = document.createElement("div");
-    dust.className = "fairy-dust";
-    dust.style.position = "absolute";
-    dust.style.left = `${x}px`;
-    dust.style.top = `${y}px`;
-    dust.style.width = "3px";
-    dust.style.height = "3px";
-    dust.style.borderRadius = "50%";
-    dust.style.background = "white";
-    dust.style.opacity = "0.8";
-    dust.style.pointerEvents = "none";
-    document.body.appendChild(dust);
-    fairyDust.push(dust);
+function drawFrame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    setTimeout(() => {
-      dust.remove();
-    }, 1000);
-  };
+  // Draw arc
+  ctx.beginPath();
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 2;
+  const endAngle = Math.PI * (1 - progress);
+  ctx.arc(centerX, centerY, radius, Math.PI, endAngle, true);
+  ctx.stroke();
 
-  let x = window.innerWidth;
-  let y = 0;
-  let interval = setInterval(() => {
-    x -= 5;
-    y += 1.5;
-    arc.style.left = `${x}px`;
-    arc.style.top = `${y}px`;
-    createDust(x, y);
-    if (x <= window.innerWidth / 2) {
-      clearInterval(interval);
-      document.getElementById("name-reveal").style.opacity = 1;
-    }
-  }, 20);
-});
+  // Add fairy dust particles at arc tip
+  const dustX = centerX + radius * Math.cos(endAngle);
+  const dustY = centerY + radius * Math.sin(endAngle);
+  dustParticles.push({ x: dustX, y: dustY, alpha: 1 });
+
+  // Draw dust
+  for (let i = 0; i < dustParticles.length; i++) {
+    const p = dustParticles[i];
+    ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+    p.y += 1; // fall
+    p.alpha -= 0.01;
+  }
+
+  // Clean up old dust
+  for (let i = dustParticles.length - 1; i >= 0; i--) {
+    if (dustParticles[i].alpha <= 0) dustParticles.splice(i, 1);
+  }
+
+  if (progress < 1) {
+    progress += 0.0025; // speed control
+    requestAnimationFrame(drawFrame);
+  }
+}
+
+drawFrame();
